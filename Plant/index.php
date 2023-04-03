@@ -31,7 +31,7 @@
      $plant1 = new Plant();
      $plant1->name = "Ribes";
      $plant1->latinName = "Grossulariaceae";
-     $plant1->perennial = "true";
+     $plant1->perennial = true;
      $plant1->height = 2;
      $plant1->continents = ["europe","asia"];
      $plant1->year = 4;
@@ -39,12 +39,12 @@
      var_dump($plant1);
      echo "<br>";
 
-     $plant5 = new Plant ("ivy","Hedera","false",0.2,["europe","africa"],1);
+     $plant5 = new Plant ("ivy","Hedera",false,0.2,["europe","africa"],1);
 
      var_dump($plant5);
      echo "<br>";
 
-     $plant6 = new Plant ("aka","era","ture",5,["europe","africa","asia"],6);
+     $plant6 = new Plant ("aka","era",true,5,["europe","africa","asia"],6);
 
      var_dump($plant6);
      echo "<br>";
