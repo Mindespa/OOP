@@ -44,6 +44,14 @@
      var_dump($plant5);
      echo "<br>";
 
+     $plant6 = new Plant ("aka","era","ture",5,["europe","africa","asia"],6);
+
+     var_dump($plant6);
+     echo "<br>";
+
+
+
+   
 
      
      
