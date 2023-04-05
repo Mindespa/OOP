@@ -15,8 +15,8 @@
     // function doSomething()
 
      $plant = new Plant();
-     print_r($plant);
-     echo "<br>";
+    //  print_r($plant);
+    //  echo "<br>";
 
      $plant->name = "Caper";
      $plant->latinName = "Flinders rose";
@@ -25,8 +25,8 @@
      $plant->continents = ["europe","asia"];
      $plant->year = 2;
 
-     var_dump($plant);
-     echo "<br>";
+    //  var_dump($plant);
+    //  echo "<br>";
 
      $plant1 = new Plant();
      $plant1->name = "Ribes";
@@ -36,32 +36,38 @@
      $plant1->continents = ["europe","asia"];
      $plant1->year = 4;
 
-     var_dump($plant1);
-     echo "<br>";
+    //  var_dump($plant1);
+    //  echo "<br>";
 
      $plant5 = new Plant ("ivy","Hedera",false,0.2,["europe","africa"],1);
 
-     var_dump($plant5);
-     echo "<br>";
+    //  var_dump($plant5);
+    //  echo "<br>";
 
      $plant6 = new Plant ("aka","era",true,5,["europe","africa","asia"],6);
 
-     var_dump($plant6);
-     echo "<br>";
+    //  var_dump($plant6);
+    //  echo "<br>";
+    $plants = [
+        $plant,
+        $plant1,
+        $plant5,
+        $plant6,
+    ];
+
+    foreach ($plants as $plant) {
+        echo "Name: " . $plant->name . "<br>";
+        echo "Latin name: " . $plant->latinName . "<br>";
+        echo "Perenial: " . ($plant->perennial ? "Yes " : "No") . "<br>";
+        echo "Height: " . $plant->height . "<br>";
+        echo "Continents: " . implode(", ",$plant->continents) . "<br>";
+        echo "Year: " . $plant->year . "<br>" . "<br>";
 
 
+    }
 
-   
+     
 
-     
-     
-     
-     
-     
-     
-     
-     
-     
      ?>
 
 
