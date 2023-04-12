@@ -1,5 +1,5 @@
-<?php 
-class DB {
+<?php
+class DB{
     public $conn;
 
     public function __construct(){
@@ -7,15 +7,9 @@ class DB {
         $username = "root";
         $password = "";
         $db = "221214_knygynas";
-        $this->conn = new mysqli($servername,$username,$password,$db);
-    
-    
-        
+        $this->conn = new mysqli($servername, $username, $password, $db);
     }
 }
-
-
-
 
 
 ?>
