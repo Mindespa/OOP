@@ -4,25 +4,66 @@ class Book{
 public $id;
 public $title;
 public $genre;
-public $authorId;
+public $author;
 
   
-public function __construct($id = null, $title = "", $genre = "", $authorId = null) {
+public function __construct($id = null, $title = "", $genre = "", $authorId=null,$name="",$surname="") {
     $this->id = $id;
     $this->title = $title;
     $this->genre = $genre;
-    $this->authorId = $authorId;
+    $this->author = new Author($authorId,$name,$surname);
 }
 
 
 public static function all(){
     $books = [];
     $db = new DB();
-    $query = "SELECT * FROM `books`";
+    $query = "SELECT * FROM `books_authors`";
     $result = $db->conn->query($query);
 
     while ($row = $result->fetch_assoc()) {
-        $books[] = new Book($row['id'], $row['title'], $row['genre'], $row['author_id']);
+        $books[] = new Book($row['id'], $row['title'], $row['genre'], $row['author_id'],$row['name'],$row['surname']);
+    }
+    $db->conn->close();
+    return $books;
+}
+
+public static function sortFilter(){
+    $sort = "";
+    switch ($_GET['sort']) {
+        case 1:
+            $sort = "title asc";
+            break;
+        case 2:
+            $sort = "title desc";
+            break;
+        case 3:
+            $sort = "genre asc";
+            break;
+        case 4:
+            $sort = "genre desc";
+             break;
+        case 5:
+            $sort = "surname asc, name asc";
+            break;
+        case 6:
+            $sort = "surname desc, name desc";
+            break;    
+           
+    }
+
+    $filter = "";
+    if(isset($_GET['filter']) && $_GET['filter'] != 0 && is_numeric($_GET['filter'])){
+        $filter = "where author_id = "  . $_GET['filter'];
+    }
+
+    $books = [];
+    $db = new DB();
+    $query = "SELECT * FROM `books_authors` " . $filter . " order by " . $sort;  
+    $result = $db->conn->query($query);
+
+    while ($row = $result->fetch_assoc()) {
+        $books[] = new Book($row['id'], $row['title'], $row['genre'], $row['author_id'],$row['name'],$row['surname']);
     }
     $db->conn->close();
     return $books;
@@ -56,7 +97,7 @@ public static function create(){
 public function update(){
     $db = new DB();
     $stmt = $db->conn->prepare("UPDATE `books` SET `title`= ?,`genre`=?,`author_id`=? WHERE `id` = ?");
-    $stmt->bind_param("ssii",$this->title, $this->genre, $this->authorId, $this->id);
+    $stmt->bind_param("ssii",$this->title, $this->genre, $this->author->id, $this->id);
     $stmt->execute();
     $stmt->close();
     $db->conn->close();

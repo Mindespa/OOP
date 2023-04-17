@@ -1,11 +1,19 @@
 <?php 
 
 include "./models/Book.php";
+include "./Validate.php";
 
 class BookController{
+
     public static function index()
 {
        $books = Book::all();
+       return $books;
+}   
+
+public static function sortFilter()
+{
+       $books = Book::sortFilter();
        return $books;
 }   
 
@@ -15,11 +23,11 @@ class BookController{
        return $book;
     }
 
-    public static function store($authors)
+    public static function store()
     {
-       if ( Validate::book($authors) ) {
+       if ( Validate::book() ) {
            $_SESSION['success'] = "Irasas teisingas";
-           Book:: create();
+           Book::create();
 
        }
     }

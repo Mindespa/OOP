@@ -18,12 +18,12 @@
      <select class="form-select" name="authorId">
         <?php foreach ($authors as $author) {
            $seleced = "";
-        if (isset($book) && $book->$authorId == $author->id) {
+        if (isset($book) && $book->author->id == $author->id) {
            $seleced = "selected";
 
         }
 
-        echo ' <option value="2"' . $author->id .'" '.$seleced .' >'. $author->name . ' ' . $author->surname .'</option>';
+        echo ' <option value="' . $author->id .'" '.$seleced .' >'. $author->name . ' ' . $author->surname .'</option>';
 
         }
         ?>

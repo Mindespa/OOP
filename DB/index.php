@@ -8,7 +8,9 @@
 </head>
 
 <body>
+<div class="bgImage">
     <?php include "./views/components/navbar.php" ?>
+    
     <a href="./index.php"><h1  class="center">Biblioteka</h1></a>
     <div class="row">
         <div class="col-sm-3"></div>
@@ -37,10 +39,11 @@
                A simple success alert—check it out!
             </div> -->
            <?php include "./views/components/form.php" ?>
+           <?php include "./views/components/sortFilter.php" ?>
            <?php include "./views/components/table.php" ?> 
         </div>
         <div class="col-sm-3"></div>
     </div>
-    
+</div>
 </body>
 </html>

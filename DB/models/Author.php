@@ -28,20 +28,20 @@ public static function all(){
     return $authors;
 }
 
-// public static function find($id){
-//     $book = new Book();
-//     $db = new DB();
-//     $stmt = $db->conn->prepare("SELECT * FROM `books` WHERE `id` = ?");
-//     $stmt->bind_param("i",$id);
-//     $stmt->execute();
-//     $result = $stmt->get_result();
-//     while ($row = $result->fetch_assoc()) {
-//         $book = new Book($row['id'], $row['title'], $row['genre'], $row['author_id']);
-//     }
-//     $stmt->close();
-//     $db->conn->close();
-//     return $book;
-// }
+public static function find($id){
+    $author = new Author();
+    $db = new DB();
+    $stmt = $db->conn->prepare("SELECT * FROM `authors` WHERE `id` = ?");
+    $stmt->bind_param("i",$id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $author = new Author($row['id'], $row['name'], $row['surname']);
+    }
+    $stmt->close();
+    $db->conn->close();
+    return $author;
+}
 
 
 // public static function create(){

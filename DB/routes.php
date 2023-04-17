@@ -8,10 +8,10 @@ session_start();
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-  echo "POST";
+  
 
 if(isset($_POST['save'])){
-    BookController::store($authors);
+    BookController::store($author);
     header("Location: ./index.php");
     die;
     
@@ -34,9 +34,13 @@ if (isset($_POST['destroy'])){
 
 
 if($_SERVER['REQUEST_METHOD'] == "GET") {
-   if(isset($_GET['edit'])){
-     $book = BookController::show();
-   }  
+  if(isset($_GET['edit'])){
+    $book = BookController::show();
+  }  
+  if(isset($_GET['sort'])){
+    $books = BookController::sortFilter();
+  }  
+
 } 
 
 
