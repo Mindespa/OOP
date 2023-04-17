@@ -15,14 +15,18 @@ class BookController{
        return $book;
     }
 
-    public static function store()
+    public static function store($authors)
     {
-        Book:: create();
+       if ( Validate::book($authors) ) {
+           $_SESSION['success'] = "Irasas teisingas";
+           Book:: create();
+
+       }
     }
 
     public static function update()
     {
-        $book = new Book($_POST['id'],$_POST['title'],$_POST['genre'],$_POST['author_id']);
+        $book = new Book($_POST['id'],$_POST['title'],$_POST['genre'],$_POST['authorId']);
         $book->update();
     }
     public static function destroy()

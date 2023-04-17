@@ -1,11 +1,17 @@
-<?php include "./controllers/BookController.php";
+<?php
+session_start();
+ include "./controllers/BookController.php";
+ include "./controllers/AuthorController.php";
+
+ $authors = AuthorController::index();
+ $books = BookController::index();
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
   echo "POST";
 
 if(isset($_POST['save'])){
-    BookController::store();
+    BookController::store($authors);
     header("Location: ./index.php");
     die;
     
@@ -34,5 +40,3 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 } 
 
 
-
-$books = BookController::index();

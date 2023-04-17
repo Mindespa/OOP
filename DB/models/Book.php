@@ -47,7 +47,7 @@ public static function find($id){
 public static function create(){
     $db = new DB();
     $stmt = $db->conn->prepare("INSERT INTO `books`(`title`, `genre`, `author_id`) VALUES (?,?,?)");
-    $stmt->bind_param("ssi",$_POST['title'], $_POST['genre'],$_POST['author_id']);
+    $stmt->bind_param("ssi",$_POST['title'], $_POST['genre'],$_POST['authorId']);
     $stmt->execute();
     $stmt->close();
     $db->conn->close();

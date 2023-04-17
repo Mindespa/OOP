@@ -1,8 +1,12 @@
 
 .center{
- text-align: center;
+     
+    text-align: center;
     font-size: 70px;
     padding: 20px;
     color: #92928b;
-
+    
+}
+a{
+    text-decoration: none;
 }
